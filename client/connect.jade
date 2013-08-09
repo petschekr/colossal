@@ -1,0 +1,68 @@
+doctype 5
+html(lang="en")
+	head
+		include meta.html
+		title Connect | colossal
+		:less
+			@link-color: #3b8bba;
+			a {
+				text-decoration: none;
+				color: @link-color;
+				&:visited {
+					color: greyscale(@link-color);
+				}
+			}
+			body {
+				background: url("/img/granite_bg.jpg");
+			}
+			#connect {
+				margin-right: auto;
+				margin-left: auto;
+				margin-top: 30px;
+				width: 464px;
+				min-height: 100px;
+				background-color: #252525;
+				border-radius: 3px;
+				padding: 10px;
+				legend {
+					margin: 0px;
+					color: #E7E7E7;
+				}
+				.string {
+					button, input {
+						margin-top: 5px;
+					}
+					button {
+						float: right;
+						padding: 5.5px 24px;
+					}
+					input {
+						width: 345px;
+					}
+				}
+				.generate {
+					input:first-child {
+						margin-top: 5px;
+					}
+				}
+			}
+			#gen-password, #gen-db {
+				margin-top: -1px;
+			}
+	body
+		section#connect
+			form.pure-form.string
+				fieldset
+					legend Connect with a 
+						a(href="http://docs.mongodb.org/manual/reference/connection-string/") URI
+					input(type="text", placeholder="mongodb://localhost:27017/test")
+					button.pure-button.pure-button-primary Connect
+			form.pure-form.generate
+				legend Generate a URI
+				fieldset.pure-group
+					input(type="text", class="pure-input-1", placeholder="Host URI", id="gen-uri")
+					input(type="text", class="pure-input-1", placeholder="Username", id="gen-username")
+					input(type="text", class="pure-input-1", placeholder="Password", id="gen-password")
+					input(type="text", class="pure-input-1", placeholder="Database", id="gen-db")
+					input(type="text", class="pure-input-1", placeholder="Port", id="gen-port")
+				button.pure-button.pure-input-1.pure-button-primary Generate
