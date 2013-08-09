@@ -5,6 +5,9 @@ crypto = require "crypto"
 # Express
 express = require "express"
 app = express()
+# Jade
+require "coffee-script"
+app.set "views", path.join path.dirname(__dirname), "client/"
 
 # For POST parsing
 app.configure ->
