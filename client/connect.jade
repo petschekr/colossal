@@ -3,20 +3,10 @@ html(lang="en")
 	head
 		include meta.html
 		include css/pure-0.2.1.min.css
+		include css/default.less
 		title Connect | colossal
 
 		:less
-			@link-color: #3b8bba;
-			a {
-				text-decoration: none;
-				color: @link-color;
-				&:visited {
-					color: greyscale(@link-color);
-				}
-			}
-			body {
-				background: url("/img/granite_bg.jpg");
-			}
 			#connect {
 				margin-right: auto;
 				margin-left: auto;

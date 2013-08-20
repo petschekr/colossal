@@ -47,7 +47,7 @@ app.post "/auth", (request, response) ->
 	await MongoClient.connect uri, defer(err, db)
 	if err
 		response.type "text"
-		response.send "There was an error connecting to the database"
+		response.send "There was an error connecting to the database\n\n#{err}"
 		return
 	await createID defer id
 	CONNECTIONS[id] = db
@@ -55,6 +55,15 @@ app.post "/auth", (request, response) ->
 	request.session.id = id
 	# Redirect them to the main page
 	response.redirect "/admin"
+# Handler that is called upon connecting
+app.get "/admin", (request, response) ->
+	id = request.session.id
+	unless id of CONNECTIONS
+		return response.redirect "/connect"
+	dbName = CONNECTIONS[id].databaseName
+	response.render "admin.jade", {dbName}, (err, html) ->
+		if err then throw err
+		response.send html
 
 
 PORT = 8080 

@@ -1,0 +1,258 @@
+doctype 5
+html(lang="en")
+	head
+		include meta.html
+		include css/pure-0.2.1.min.css
+		include css/default.less
+		- var dbTitle = dbName + " | colossal";
+		title= dbTitle
+		style.
+			body {
+				color: #fff;
+			}
+
+			/* LAYOUT CSS */
+			#layout {
+			padding-left:500px; /* "left col (nav + list)" width */
+			position: relative;
+			}
+
+			#nav, #list {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			overflow: auto;
+			}
+			#nav {
+			margin-left:-500px; /* "left col (nav + list)" width */
+			width:150px;
+			background: rgb(37, 42, 58);
+			text-align: center;
+			padding: 2em 0;
+			}
+
+			#list {
+			margin-left: -350px;
+			width:350px;
+			border-right: 1px solid #ddd;
+			}
+
+			/* HELPER CLASSES */
+			.primary-button,
+			.secondary-button {
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+			}
+			.primary-button {
+			color: #fff;
+			background: #1b98f8;
+			margin: 1em 0;
+			}
+			.secondary-button {
+			background: #fff;
+			border: 1px solid #ddd;
+			color: #666;
+			padding: 0.5em 2em;
+			font-size: 80%;
+			}
+
+
+
+			/* Vertical Navigation Styles */
+			#nav .pure-menu {
+			background: transparent;
+			border: none;
+			text-align: left;
+			}
+			#nav .pure-menu a:hover,
+			#nav .pure-menu a:focus {
+			background: rgb(55, 60, 90);
+			}
+			#nav .pure-menu a {
+			color: #fff;
+			margin-left: 0.5em;
+			}
+			#nav .pure-menu-heading {
+			border-bottom: none;
+			font-size:110%;
+			color: rgb(75, 113, 151);
+			}
+
+			#nav .nav-menu-button {
+			display: none;
+			}
+
+			.email-count {
+			color: rgb(75, 113, 151);
+			}
+
+			.email-label-personal,
+			.email-label-work,
+			.email-label-travel {
+			width: 15px;
+			height: 15px;
+			display: inline-block;
+			margin-right: 0.5em;
+			border-radius: 3px;
+			}
+			.email-label-personal {
+			background: #ffc94c;
+			}
+			.email-label-work {
+			background: #41ccb4;
+			}
+			.email-label-travel {
+			background: #40c365;
+			}
+
+
+
+
+			/* Email Item Styles */
+			.email-item {
+			padding: 0.9em 1em;
+			border-bottom: 1px solid #ddd;
+			border-left: 6px solid transparent;
+			}
+			.email-avatar {
+			border-radius: 3px;
+			margin-right: 0.5em;
+			}
+			.email-name,
+			.email-subject {
+			margin: 0;
+			}
+			.email-name {
+			text-transform: uppercase;
+			color: #999;
+			}
+			.email-desc {
+			font-size: 80%;
+			margin: 0.4em 0;
+			}
+
+			.email-item-selected {
+			background: #eee;
+			}
+			.email-item-unread {
+			border-left: 6px solid #02a3c6;
+			}
+
+			/* Email Content Styles */
+			.email-content-header, .email-content-body, .email-content-footer {
+			padding: 1em 2em;
+			}
+			.email-content-header {
+			border-bottom: 1px solid #ddd;
+			}
+
+			.email-content-title {
+			margin: 0.5em 0 0;
+			}
+			.email-content-subtitle {
+			font-size: 1em;
+			margin: 0;
+			font-weight: normal;
+			}
+			.email-content-subtitle span {
+			color: #999;
+			}
+			.email-content-controls {
+			margin-top: 2em;
+			text-align: right;
+			}
+			.email-content-controls .secondary-button {
+			margin-bottom: 0.3em;
+			}
+
+
+			@media (max-width: 867px) {
+
+			#list,
+			#main {
+			width: 100%;
+			}
+			#layout {
+			padding-left: -150px;
+			}
+			#list {
+			height: 33%;
+			border-right: 0;
+			border-bottom: 1px solid #ddd;
+			}
+			#main {
+			position: fixed;
+			top: 33%;
+			right: 0;
+			bottom: 0;
+			left: 150px;
+			overflow: auto;
+			width: auto; /* so that it's not 100% */
+			}
+			}
+
+			@media (max-width: 480px) {
+			#layout, #nav, #list, #main {
+			position: static;
+			margin: 0;
+			padding: 0;
+			}
+			#nav {
+			width: 100%;
+			height: 40px;
+			position: relative;
+			}
+			#nav .nav-menu-button {
+			display: block;
+			top: 0.5em;
+			right: 0.5em;
+			position: absolute;
+			}
+			#nav.active {
+			height: 80%;
+			}
+			.nav-inner {
+			display: none;
+			}
+			#nav.active .nav-inner {
+			display: block;
+			}
+			.email-avatar {
+			width: 40px;
+			height: 40px;
+			}
+			}*/
+	body
+		#layout.pure-g-r.content
+			#nav.pure-u
+				a.nav-menu-button(href="#") Menu
+				.nav-inner
+					button.pure-button.primary-button Compose
+
+					.pure-menu.pure-menu-open
+						ul
+							li
+								a(href="#") Stuff
+							li
+								a(href="#") Stuff2
+							li.pure-menu-heading Label
+							li
+								a(href="#") More stuff
+
+			#main.pure-u-1
+				.email-content
+					.email-content-header.pure-g
+						.pure-u-1-2
+							h1.email-content-title= dbName
+							p.email-content-subtitle
+								| From Tilo Mitra at 3:56pm, April 3, 2012
+
+						.pure-u-1-2.email-content-controls
+							button.pure-button.secondary-button Reply
+							button.pure-button.secondary-button Forward
+							button.pure-button.secondary-button Move to
+
+					.email-content-body
+						p.
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
