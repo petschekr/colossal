@@ -53,11 +53,12 @@ html(lang="en")
 			}
 	body
 		section#connect
-			div.pure-form.string
+			form.pure-form.string(method="post", action="/auth")
 				fieldset
 					legend Connect with a 
 						a(href="http://docs.mongodb.org/manual/reference/connection-string/") URI
-					input(type="text", placeholder="mongodb://localhost:27017/test")
+					input(type="hidden", name="placeholder", value="mongodb://localhost:27017/test")
+					input(type="text", name="uri", placeholder="mongodb://localhost:27017/test")
 					button.pure-button.pure-button-primary Connect
 			div.pure-form.generate
 				legend Generate a URI
