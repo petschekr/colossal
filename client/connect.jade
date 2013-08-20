@@ -2,7 +2,9 @@ doctype 5
 html(lang="en")
 	head
 		include meta.html
+		include css/pure-0.2.1.min.css
 		title Connect | colossal
+
 		:less
 			@link-color: #3b8bba;
 			a {
@@ -51,13 +53,13 @@ html(lang="en")
 			}
 	body
 		section#connect
-			form.pure-form.string
+			div.pure-form.string
 				fieldset
 					legend Connect with a 
 						a(href="http://docs.mongodb.org/manual/reference/connection-string/") URI
 					input(type="text", placeholder="mongodb://localhost:27017/test")
 					button.pure-button.pure-button-primary Connect
-			form.pure-form.generate
+			div.pure-form.generate
 				legend Generate a URI
 				fieldset.pure-group
 					input(type="text", class="pure-input-1", placeholder="Host URI", id="gen-uri")
@@ -66,3 +68,4 @@ html(lang="en")
 					input(type="text", class="pure-input-1", placeholder="Database", id="gen-db")
 					input(type="text", class="pure-input-1", placeholder="Port", id="gen-port")
 				button.pure-button.pure-input-1.pure-button-primary Generate
+		include js/connect.coffee
