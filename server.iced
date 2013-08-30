@@ -60,8 +60,15 @@ app.get "/admin", (request, response) ->
 	id = request.session.id
 	unless id of CONNECTIONS
 		return response.redirect "/connect"
-	dbName = CONNECTIONS[id].databaseName
-	response.render "admin.jade", {dbName}, (err, html) ->
+	db = CONNECTIONS[id]
+	dbName = db.databaseName
+	await db.stats defer err, dbStats
+	await db.admin().serverStatus defer err, dbStatus
+	await db.collectionNames {namesOnly: true}, defer err, dbCollections
+	# Shorten the collection names
+	for collection, cIndex in dbCollections
+		dbCollections[cIndex] = (collection.split(".")[1..]).join "."
+	response.render "admin.jade", {dbName, dbStats, dbStatus, dbCollections}, (err, html) ->
 		if err then throw err
 		response.send html
 
