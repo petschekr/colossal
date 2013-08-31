@@ -29,7 +29,7 @@ html(lang="en")
 		pure-g-r.content
 			#sidebar.pure-u-1-6
 				.pure-menu.pure-menu-open
-					a.pure-menu-heading Yahoo! Sites
+					a.pure-menu-heading= dbName
 					ul
 						li
 							a(href="/admin") Main
@@ -39,9 +39,14 @@ html(lang="en")
 							a(href="/connect") Connect...
 					a.pure-menu-heading Collections
 					ul
-						each collection in dbCollections
+						if dbCollections.length != 0
+							each collection in dbCollections
+								li
+									a(href="#")= collection
+						else
 							li
-								a(href="#")= collection
+								a(href="#")
+									em No collections
 
 			#main.pure-u-5-6
 				h1 Hello
