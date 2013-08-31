@@ -37,6 +37,11 @@ app.all "/", (request, response) ->
 	undefined
 	response.redirect "/connect"
 app.get "/connect", (request, response) ->
+	id = request.session.id
+	if id
+		tmp = []
+		tmp.push toPush for toPush in CONNECTIONS if toPush isnt id
+		CONNECTIONS = tmp
 	response.render "connect.jade", (err, html) ->
 		if err then throw err
 		response.send html
