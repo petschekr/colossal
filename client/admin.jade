@@ -25,6 +25,24 @@ html(lang="en")
 			#main {
 				width: 82.33%;
 			}
+			#collections {
+				display: inline-block;
+				border: none;
+				padding-right: 5px;
+			}
+			#addCollection {
+				display: inline-block;
+				padding: 0;
+				color: #0086B8;
+				font-weight: bold;
+				position: relative;
+				top: 1px;
+			}
+			hr {
+				margin: 0;
+				border: none;
+				border-bottom: 1px solid #444;
+			}
 	body
 		pure-g-r.content
 			#sidebar.pure-u-1-6
@@ -37,7 +55,8 @@ html(lang="en")
 							a(href="/settings") Settings
 						li
 							a(href="/connect") Connect...
-					a.pure-menu-heading Collections
+					a#collections.pure-menu-heading Collections <a id="addCollection" href="#">+</a>
+					hr
 					ul
 						if dbCollections.length != 0
 							each collection in dbCollections
